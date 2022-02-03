@@ -112,9 +112,7 @@ router.get("/exchange-rate-bgn", asyncHandler(async(req, res) => {
         } else {
             const historicalPrice = await fetch(`${process.env.CURRENCY_API_URL_HISTORICAL}&base_currency=USD`)
             const historicalRes = await historicalPrice.json()
-            console.log("HistoricalREs:   ", historicalRes)
             const objKey = Object.keys(historicalRes.data)
-            console.log("HistoricalREs2:   ", historicalRes.data[objKey[0]])
             exchangeRateRes = historicalRes.data[objKey[0]]
         }
     }
@@ -123,7 +121,6 @@ router.get("/exchange-rate-bgn", asyncHandler(async(req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        console.log("file mimetype:   ", file.mimetype)
       cb(null, "./uploads")
     },
     filename: (req, file, cb) => {
@@ -136,7 +133,6 @@ const storage = multer.diskStorage({
 router.post("/send-email", uploadStorage.single("file"),  asyncHandler(async(req, res) => {
         const {attachFactoryPO, attachPackingList} = req.body
         const attachmentArr = []
-        console.log("typeof attachFactory:   ", typeof attachFactoryPO, attachFactoryPO == "true", attachPackingList == false)
         if(attachFactoryPO == "true"){
             attachmentArr.push({
                 content:req.body.factoryPO,

@@ -65,7 +65,6 @@ const theme = createTheme({
 
 const VendorPricingModal = (props) => {
     const currVendor = props.vendor
-    console.log("these are the props :    ", props,currVendor)
     const dispatch = useDispatch()
 
     const shopifyInfo = useSelector(state => state.orders.shopifyOrders)
@@ -100,7 +99,6 @@ const VendorPricingModal = (props) => {
             priceObj.existingPricingId = currFactoryItemPricing?.id == null ? null : currFactoryItemPricing?.id
             formatFactoryPricingArr.push(priceObj)
         })
-        console.log("this is the currTest:    ", formatFactoryPricingArr)
         setCombinedCatPrice(formatFactoryPricingArr)
     }
 
@@ -131,13 +129,11 @@ const VendorPricingModal = (props) => {
                 delete ele.id
                 existingFactoryCats.push(ele)
             } else {
-                console.log("this is the ele element:    ", ele)
                 delete ele.id
                 if(ele.pricingLocal == "") return
                 newFactoryCats.push(ele)
             }
         })
-        console.log("this is newFactoryCats:    ", newFactoryCats)
         await dispatch(createVendorPricing({pricingArr:newFactoryCats}))
         await dispatch(updateVendorPricing({pricingArr:existingFactoryCats}))
         await props.reloadVendors()

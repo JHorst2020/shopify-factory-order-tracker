@@ -157,7 +157,6 @@ const FactoryOrderModal = (props) => {
         }
         if(shipMethod == true){
             const addy = await dispatch(getCustomerAddress({shipToId: customerOrderShipToAddressId}))
-            console.log("Customer Addy:   ", addy)
             const addyPayload = {
                 name: `${addy.firstName} ${addy.lastName}`,
                 address1: addy.address1,

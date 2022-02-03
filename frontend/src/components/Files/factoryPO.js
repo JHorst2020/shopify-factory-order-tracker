@@ -154,13 +154,11 @@ const FactoryPO = (props) => {
     
     const handleView = async() => {
       const getElement = await document.getElementById("factory-purchase-order")
-      console.log("getElement:   ", getElement)
       htmlPDFNewTab(getElement, `Factory PO#${shopifyOrderNum} - Packing List`)
     }
     const handleDownload = async() => {
       const getElement = await document.getElementById("factory-purchase-order")
       htmlPDFSaveFile(getElement, `Factory PO#${shopifyOrderNum} - Packing List`)
-      // console.log("getElement:   ", getElement)
     }
 
 

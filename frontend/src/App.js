@@ -25,7 +25,6 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    console.log(process.env.REACT_APP_TEMP_PW)
   }, [dispatch]);
 
   return (

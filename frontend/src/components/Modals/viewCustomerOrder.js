@@ -144,7 +144,6 @@ const ViewCustomerOrderModal = (props) => {
                             </Grid>: null}
                             {unfilArr.map((ele)=>{
                                 const isOrdered = submittedOrders.find(x => x.shopifyId == ele.id)
-                                console.log("ele:  ", isOrdered)
 
                                 return(
                                     <Grid container item xs={12} sx={{p:1}}>

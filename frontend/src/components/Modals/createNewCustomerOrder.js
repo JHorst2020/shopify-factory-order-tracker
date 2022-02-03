@@ -226,9 +226,6 @@ const CreateCustomerOrderModal = (props) => {
     }
 
     const handleSubmit = () => {
-        console.log("orderLineItems:    ", orderLineItems)
-        console.log("These are values:    ", value)
-        console.log("These are customerInfo:    ", customerInfo)
     }
 
     const handleFlattenOrder = () => {
@@ -340,7 +337,6 @@ const CreateCustomerOrderModal = (props) => {
     }
 
     const handleFactoryOrderInput = (input, index, factory, info) => {
-        console.log("handleFactoryOrderInput")
         const cloneArr= [...factoryOrderInfo]
         cloneArr[index] = {factoryId: factory, factoryPO: input, info}
         setFactoryOrderInfo([...cloneArr])
@@ -400,7 +396,6 @@ const CreateCustomerOrderModal = (props) => {
             const curreleOrder = await dispatch(createVendorOrder(factoryOrderObj))
             // console.log("this is curreleOrder:    ", curreleOrder)
             let lineItemArr = []
-            console.log("This is the factoryOrderInfo on 395 ", factoryOrderInfo)
             const pricingArr = currele.info.Pricings
             flatLineItem.forEach(async(currele2) => {
                 // console.log("this is currele2:   ", currele2)
@@ -534,7 +529,6 @@ const CreateCustomerOrderModal = (props) => {
                                                                         value={value[index][index2].value}
                                                                         onChange={(event, newValue) => {
                                                                             if(typeof newValue === 'string'){
-                                                                                console.log("this is newvalue 1 area:    ", newValue)
                                                                                 setTimeout(()=> {
                                                                                     toggleOpen(true)
                                                                                     handleUpdateValue({
@@ -550,7 +544,6 @@ const CreateCustomerOrderModal = (props) => {
                                                                                     }, index, index2)
                                                                                 })
                                                                             } else if (newValue && newValue.inputValue){
-                                                                                console.log("this is newvalue 2 area:    ", newValue)
                                                                                 toggleOpen(true)
                                                                                 setDialogValue({
                                                                                     item: newValue.inputValue,
@@ -564,7 +557,6 @@ const CreateCustomerOrderModal = (props) => {
                                                                                         category:0
                                                                                     })
                                                                                 } else {
-                                                                                console.log("this is newvalue 3 area:    ", newValue)
                                                                                 const valueClone = [...value]
                                                                                 const valueEle = valueClone[index][index2].value = newValue
                                                                                 setValue([...valueClone])
@@ -714,7 +706,6 @@ const CreateCustomerOrderModal = (props) => {
                                     // console.log("this is currVendorInfo:   ",currVendorInfo, eleFactory)
                                     const factoryID = currVendorInfo.id
                                     
-                            console.log("this is firstPOString:  ", factoryOrderInfo)
                                     
                                     return(
                                         <Grid container sx={{p:2}} spacing={2}>
@@ -736,7 +727,6 @@ const CreateCustomerOrderModal = (props) => {
 
                                             const itemFactoryPricing = currVendorInfo.Pricings.find(x => x.category == ele.value?.category)
                                             const itemPrice = itemFactoryPricing?.pricingLocal
-                                            console.log("This is item factory price:    ",itemFactoryPricing, itemPrice)
 
 
 

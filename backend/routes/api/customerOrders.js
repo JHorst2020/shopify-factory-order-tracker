@@ -99,13 +99,11 @@ router.get("/shopify-customer-list", asyncHandler(async(req, res) => {
         status = shopifyLoop.status
         linkHeader = shopifyLoop.headers.get("Link")
         const shopifyLoopRes = await shopifyLoop.json()
-        console.log(status, parseHeader)
         customerBucket.push(...shopifyLoopRes.orders)
         loopCount = parseInt(loopCount) + 1
         linkHeaders.push(parseHeader)
         if(shopifyLoop.status == 200 && loopCount < 10 ){
             linkHeaderArr.push(linkHeader)
-            console.log("keep going")
            await keepGoing(linkHeader)
         }
     }

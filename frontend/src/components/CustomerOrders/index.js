@@ -135,7 +135,6 @@ const CustomerOrder = () => {
 
   const getTotalLineItemCount = (input) => {
       const currCustomer = shopifyInfo.filter(x => x.id == input.shopifyId)
-        console.log("this is currCustomer:       ", currCustomer[0])
         let totalCount = currCustomer[0].lineItems.length
         //TODO: error handling
         return(
@@ -145,7 +144,6 @@ const CustomerOrder = () => {
 
   const getUnfulfilledLineItemCount = (input) => {
       const currCustomer = shopifyInfo.filter(x => x.id == input.shopifyId)
-        console.log("this is currCustomer:       ", currCustomer[0], input)
         if(Array.isArray(currCustomer[0].unfulfilledArray) == false){
           return (renderCellFormat(""))
         }

@@ -27,10 +27,8 @@ export const htmlPDFBase64 = async(string, fileName) => {
     //     return pdfAsString= arr[1];  
     // })
     const worker = html2pdf().from(string).outputPdf().then((pdf)=>{
-        console.log("typeof worker:    ", typeof worker)
         const base64 = btoa(pdf)
         // const base64 = Buffer.from(pdf,'base64')
-        console.log("base64:   ", base64)
         return base64
     })
     return worker
