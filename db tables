@@ -1,0 +1,32 @@
+npx sequelize model:generate --name Customer --attributes companyName:string,repFirstName:string,repLastName:string,repEmail:string,repPhoneNumber:string,addressLine1:string,addressLine2:string,addressLine3:string,city:string,state:string,zipcode:string,country:string
+npx sequelize model:generate --name Branch --attributes parentCompany:integer,repFirstName:string,repLastName:string,repEmail:string,repPhoneNumber:string,addressLine1:string,addressLine2:string,addressLine3:string,city:string,state:string,zipcode:string,country:string
+npx sequelize model:generate --name Vendor --attributes companyName:string,repFirstName:string,repLastName:string,repEmail:string,repPhoneNumber:string,addressLine1:string,addressLine2:string,addressLine3:string,city:string,state:string,zipcode:string,country:string,localCurrency:string
+npx sequelize model:generate --name Item --attributes styleNumber:string,styleName:string,color:string,msrp:integer,uniform:boolean,companyId:integer
+npx sequelize model:generate --name ItemVariant --attributes itemId:integer,size:string
+npx sequelize model:generate --name CustomerOrder --attributes customerId:integer,dolcessaPO:integer,customerPO:string,dateOrdered:date,shipDate:date,cancelDate:date,status:string
+npx sequelize model:generate --name CustomerLineItem --attributes customerPO:integer,itemId:integer,variantId:integer,quantity:integer,fulfilled:boolean,comment:string
+npx sequelize model:generate --name FactoryOrder --attributes factoryId:integer,factoryPO:integer,dolcessaPO:integer,dateOrdered:date,shipDate:date,fulfillmentStatus:string,totalCostLocalCurrency:integer,paymentStatus:boolean,orderRecipient:integer
+npx sequelize model:generate --name FactoryLineItem --attributes factoryPO:integer,itemId:integer,variantId:integer,quantity:integer,fulfilled:boolean,unitCostLocalCurrency:integer,comment:string
+npx sequelize model:generate --name Shipment --attributes carrier:string,trackingNumber:string,dateShipped:date,expectedDeliveryDate:date,factoryPO:integer,customerPO:integer
+npx sequelize model:generate --name ShipmentLineItem --attributes shipmentId:integer,factoryLineItem:integer,quantity:integer,comment:string
+npx sequelize model:generate --name ViewVendor --attributes userId:integer,vendorId:integer,viewOrders:boolean
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/JHorst2020/dolcessa-factory-orders.git
+git push -u origin main
+
+
+
+npx dotenv sequelize db:migrate
+
+
+MVP
+1. CRUD companies
+2. CRUD vendors
+3. CRUD Customer PO
+4. CRUD Factory PO
+5. CRUD Shipments
+6. CRUD Items
